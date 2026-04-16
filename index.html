@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Medhahal Sai Sanjeev | AI/ML Portfolio</title>
+  
+  <!-- Google Fonts + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4ade80;
+      border-radius: 4px;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(74, 222, 128, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .brand-logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff, #4ade80);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #4ade80;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #4ade80;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0a0a0a 0%, #0f172a 100%);
+      padding: 0 5%;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 1400px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(74, 222, 128, 0.12);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      color: #4ade80;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(74, 222, 128, 0.25);
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #4ade80;
+      margin-bottom: 1rem;
+    }
+
+    .hero-description {
+      color: #a0a0a0;
+      max-width: 550px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: #4ade80;
+      color: #0a0a0a;
+    }
+
+    .btn-primary:hover {
+      background: #22c55e;
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      border: 2px solid #4ade80;
+      color: #4ade80;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: #4ade80;
+      color: #0a0a0a;
+      transform: translateY(-3px);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .avatar-wrapper {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+      padding: 4px;
+    }
+
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #0f172a;
+    }
+
+    .avatar-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: #4ade80;
+      font-size: 0.75rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    section {
+      padding: 5rem 5%;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: #4ade80;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      background: #4ade80;
+      margin: 1rem auto 0;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: #111111;
+      border-radius: 20px;
+      padding: 1.8rem;
+      border: 1px solid #222;
+      transition: all 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: #4ade80;
+    }
+
+    .project-icon {
+      font-size: 2rem;
+      color: #4ade80;
+      margin-bottom: 1rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      color: #4ade80;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .project-section {
+      margin-top: 0.8rem;
+    }
+
+    .project-section h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #4ade80;
+      margin: 0.6rem 0 0.3rem 0;
+    }
+
+    .project-section p, .project-section li {
+      font-size: 0.85rem;
+      color: #c0c0c0;
+      line-height: 1.5;
+    }
+
+    .project-section ul {
+      padding-left: 1.2rem;
+      margin: 0.3rem 0;
+    }
+
+    .project-section li {
+      margin-bottom: 0.3rem;
+    }
+
+    .github-repo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #1a1a1a;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      color: #4ade80;
+      text-decoration: none;
+      margin-top: 1rem;
+      border: 1px solid #333;
+      transition: all 0.3s;
+    }
+
+    .github-repo-link:hover {
+      background: #4ade80;
+      color: #0a0a0a;
+      border-color: #4ade80;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: #111111;
+      border-radius: 20px;
+      padding: 1.8rem;
+      border: 1px solid #222;
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #4ade80;
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      color: #4ade80;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      color: #4ade80;
+      margin-bottom: 1rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card ul li {
+      color: #c0c0c0;
+      font-size: 0.85rem;
+      margin-bottom: 0.6rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .card ul li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: #4ade80;
+    }
+
+    .skills-wrapper {
+      background: #111111;
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid #222;
+    }
+
+    .skill-category {
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-category h4 {
+      color: #4ade80;
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-tag {
+      background: #1a1a1a;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      color: #e0e0e0;
+      border: 1px solid #333;
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      border-color: #4ade80;
+      color: #4ade80;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .cert-item {
+      background: #111;
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      border-left: 4px solid #4ade80;
+      font-size: 0.9rem;
+    }
+
+    .additional-info {
+      background: #111111;
+      border-radius: 20px;
+      padding: 1.8rem;
+      border: 1px solid #222;
+    }
+
+    .info-row {
+      margin-bottom: 1rem;
+    }
+
+    .info-label {
+      color: #4ade80;
+      font-weight: 600;
+      margin-right: 1rem;
+      display: inline-block;
+      min-width: 100px;
+    }
+
+    .info-value {
+      color: #c0c0c0;
+    }
+
+    .contact-wrapper {
+      background: #0f0f0f;
+      border-radius: 28px;
+      padding: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      border: 1px solid #222;
+    }
+
+    .contact-info {
+      flex: 2;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-item i {
+      width: 40px;
+      height: 40px;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #4ade80;
+    }
+
+    .contact-item a, .contact-item span {
+      color: #e0e0e0;
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      color: #4ade80;
+    }
+
+    .social-links {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .social-btn {
+      background: #151515;
+      padding: 0.8rem 1.2rem;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #2a2a2a;
+      transition: all 0.3s;
+    }
+
+    .social-btn:hover {
+      background: #4ade80;
+      color: #0a0a0a;
+      transform: translateX(6px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #050505;
+      border-top: 1px solid #1a1a1a;
+      color: #666;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 968px) {
+      .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      .hero-description {
+        margin: 0 auto 1.5rem auto;
+      }
+      .hero-buttons {
+        justify-content: center;
+      }
+      .avatar-wrapper {
+        width: 220px;
+        height: 220px;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        align-items: center;
+        padding-top: 2rem;
+        gap: 1.5rem;
+        transition: left 0.3s;
+      }
+      .nav-menu.active {
+        left: 0;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-container">
+    <a href="#home" class="brand-logo">MS</a>
+    <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#home" class="nav-link">HOME</a></li>
+      <li><a href="#experience" class="nav-link">EXPERIENCE</a></li>
+      <li><a href="#projects" class="nav-link">PROJECTS</a></li>
+      <li><a href="#skills" class="nav-link">SKILLS</a></li>
+      <li><a href="#contact" class="nav-link">CONTACT</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge"><i class="fas fa-brain"></i> AI/ML Engineer</div>
+      <h1>I'M <span class="gradient-text">SAI SANJEEV</span></h1>
+      <div class="hero-title">ALPHA TL Manager || National Institute of Engineering, Mysore</div>
+      <p class="hero-description">Computer Science graduate specializing in AI/ML. Built and deployed 6+ ML models, optimized data pipelines (25% faster throughput), and led cross-functional teams of 10+ members.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Contact Me</a>
+        <a href="#projects" class="btn btn-outline"><i class="fas fa-code"></i> View Projects</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="avatar-wrapper">
+        <div class="avatar-inner">
+          <img src="https://ui-avatars.com/api/?background=0f172a&color=4ade80&bold=true&size=320&name=M+S+SANJEEV" alt="Profile">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator"><i class="fas fa-chevron-down"></i><span>SCROLL</span></div>
+</section>
+
+<!-- Experience - Revised with specific numbers and diverse verbs -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-subtitle">PROFESSIONAL JOURNEY</div>
+      <h2 class="section-title">Work Experience</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="grid-2">
+      <div class="card"><div class="card-icon"><i class="fas fa-microchip"></i></div><h3>Plasmid</h3><div class="card-meta">Machine Learning Intern • Oct 2024</div><ul><li>Developed 3 ML models achieving 25% higher prediction accuracy than baseline</li><li>Collaborated with 4 cross-functional teams to deliver 20% faster project completion</li><li>Analyzed 50K+ real-world records, identifying 8 key trends that boosted model precision by 15%</li></ul></div>
+      <div class="card"><div class="card-icon"><i class="fas fa-users"></i></div><h3>ALPHA, NIE Mysuru</h3><div class="card-meta">Student TL Manager • May 2025 - Present</div><ul><li>Organized 6 workshops and 2 hackathons with 200+ student attendees</li><li>Mentored 15 junior students, guiding 5 AI-driven projects to completion</li><li>Launched weekly technical discussions, increasing peer participation by 40%</li></ul></div>
+      <div class="card"><div class="card-icon"><i class="fas fa-chalkboard"></i></div><h3>Teaching Assistant</h3><div class="card-meta">Interdisciplinary PBL • Oct 2025 - Present</div><ul><li>Delivered 20+ lectures to 80 first-year students on project-based learning</li><li>Advised 12 student teams, helping 10 secure top grades in final presentations</li><li>Streamlined documentation templates, reducing report preparation time by 30%</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects - Full detailed info, cleaned language -->
+<section id="projects" style="background: #0d0d0d;">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-subtitle">TECHNICAL BUILD LOG</div>
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="project-grid">
+      
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-industry"></i></div>
+        <h3>Modbus-Based SCADA System</h3>
+        <div class="project-tag">Industrial IoT Monitoring & Control</div>
+        <div class="project-section"><h4>Goal</h4><p>Build a low-cost SCADA system for real-time industrial monitoring and device control.</p></div>
+        <div class="project-section"><h4>Architecture</h4><p>ESP32 (Modbus Slave) + Raspberry Pi 5 (Modbus Master + Local Server) + Web Dashboard</p></div>
+        <div class="project-section"><h4>Implementation</h4><ul><li>Programmed ESP32 to collect DHT11 temperature data into Modbus registers</li><li>Configured Raspberry Pi to poll ESP32 every 2 seconds via Modbus RTU/TCP</li><li>Built a local web dashboard showing real-time values and control buttons</li><li>Integrated Cloudflare Tunnel for secure remote access without port forwarding</li></ul></div>
+        <div class="project-section"><h4>Outcome</h4><p>Offline-capable SCADA system with 99% data accuracy and secure remote monitoring.</p></div>
+        <div class="project-section"><h4>Skills Applied</h4><p>Industrial protocols (Modbus), embedded C, IoT architecture, Cloudflare tunnels.</p></div>
+        <a href="https://github.com/goodachari-master/Modbus-Based-SCADA-System-Level-4.git" class="github-repo-link" target="_blank"><i class="fab fa-github"></i> View Code →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-shield-virus"></i></div>
+        <h3>STIX Malware Analyser</h3>
+        <div class="project-tag">ML-Powered Cyber Threat Detection</div>
+        <div class="project-section"><h4>Goal</h4><p>Automate malware detection using ML and structured threat intelligence.</p></div>
+        <div class="project-section"><h4>Approach</h4><ul><li>Used STIX format to standardize raw threat data (indicators, attack patterns)</li><li>Engineered features: IP behavior, file signatures, network patterns</li><li>Deployed Isolation Forest for anomaly detection (unsupervised)</li><li>Deployed SVM for known malware classification (supervised)</li></ul></div>
+        <div class="project-section"><h4>Results</h4><p>Hybrid model improved detection reliability by 30% compared to single-model approach.</p></div>
+        <div class="project-section"><h4>Skills Applied</h4><p>STIX standards, anomaly detection, SVM, end-to-end ML pipeline automation.</p></div>
+        <a href="https://github.com/goodachari-master/STIX-Malware-Analyser.git" class="github-repo-link" target="_blank"><i class="fab fa-github"></i> View Code →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>NVMe Level-3 Health Analyzer</h3>
+        <div class="project-tag">Predictive Maintenance</div>
+        <div class="project-section"><h4>Goal</h4><p>Predict NVMe SSD failure risk using drive telemetry (SMART data).</p></div>
+        <div class="project-section"><h4>Workflow</h4><ul><li>Auto-extracted 15+ metrics: temperature, read/write cycles, error rates, power-on hours</li><li>Built an automated feature extraction module to remove noise</li><li>Trained XGBoost model (handles missing data, structured logs)</li><li>Optimized hyperparameters using Genetic Algorithm (200+ generations)</li></ul></div>
+        <div class="project-section"><h4>Performance</h4><p>Processed 10,000 records in 137 seconds, achieved 92% failure prediction accuracy.</p></div>
+        <div class="project-section"><h4>Skills Applied</h4><p>XGBoost, genetic algorithms, feature engineering, predictive maintenance.</p></div>
+        <a href="https://github.com/goodachari-master/NVMe-Level-3.git" class="github-repo-link" target="_blank"><i class="fab fa-github"></i> View Code →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-comments"></i></div>
+        <h3>AI Document Query Chatbot</h3>
+        <div class="project-tag">RAG + LLM</div>
+        <div class="project-section"><h4>Goal</h4><p>Answer user questions from uploaded documents using semantic search, not keywords.</p></div>
+        <div class="project-section"><h4>Architecture</h4><ul><li>Split documents into 500-token chunks, generated embeddings via Sentence Transformers</li><li>Stored vectors in Chroma DB for fast similarity search</li><li>Converted user query to embedding, retrieved top-3 relevant chunks</li><li>Passed context to LLaMA 2 via LangChain for answer generation</li></ul></div>
+        <div class="project-section"><h4>Metrics</h4><p>90% answer accuracy, 40% faster response (2.1s → 1.26s), 30% faster retrieval.</p></div>
+        <div class="project-section"><h4>Skills Applied</h4><p>RAG, vector databases, LLM integration, LangChain, embeddings.</p></div>
+        <a href="https://github.com/Puttu03/Chatboot.git" class="github-repo-link" target="_blank"><i class="fab fa-github"></i> View Code →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-credit-card"></i></div>
+        <h3>Online Payments Fraud Detection</h3>
+        <div class="project-tag">Financial Anomaly Detection</div>
+        <div class="project-section"><h4>Goal</h4><p>Identify fraudulent credit card transactions from imbalanced Kaggle dataset (0.17% fraud).</p></div>
+        <div class="project-section"><h4>Process</h4><ul><li>Applied SMOTE to balance classes (from 492 → 10,000 fraud samples)</li><li>Engineered features: transaction velocity, balance shift, time since last transaction</li><li>Tested Random Forest, XGBoost, and Logistic Regression</li></ul></div>
+        <div class="project-section"><h4>Outcome</h4><p>Random Forest achieved 95% precision and 93% recall; processing time cut by 25% via optimized pipelines.</p></div>
+        <div class="project-section"><h4>Skills Applied</h4><p>Imbalanced learning (SMOTE), feature engineering, model evaluation (precision/recall/F1).</p></div>
+        <a href="https://github.com/Puttu03/Fraud-Detection.git" class="github-repo-link" target="_blank"><i class="fab fa-github"></i> View Code →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-seedling"></i></div>
+        <h3>SOIL - Sustainable Organic Intelligence Layer</h3>
+        <div class="project-tag">Smart Agriculture (Active)</div>
+        <div class="project-section"><h4>Goal</h4><p>Real-time soil monitoring + AI crop/fertilizer recommendations for small farmers.</p></div>
+        <div class="project-section"><h4>System Components</h4><ul><li>Sensors: soil moisture (capacitive), pH, NPK (nutrient)</li><li>Data aggregation on ESP32, transmitted via LoRa to a central gateway</li><li>AI inference on Raspberry Pi: classifies soil health into 3 categories</li></ul></div>
+        <div class="project-section"><h4>Impact (Pilot)</h4><p>Reduced manual testing time by 80% (2 hours → 20 minutes), recommended crops matched expert advice in 85% of cases.</p></div>
+        <div class="project-section"><h4>Planned Upgrades</h4><p>Weather API integration + auto-irrigation control.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education & Certifications -->
+<section>
+  <div class="container">
+    <div class="grid-2">
+      <div><div class="section-header" style="text-align:left"><div class="section-subtitle">ACADEMICS</div><h2 class="section-title">Education</h2><div class="section-divider" style="margin:1rem 0"></div></div>
+      <div class="card"><div class="card-icon"><i class="fas fa-university"></i></div><h3>B.E in Computer Science (AI & ML)</h3><div class="card-meta">National Institute of Engineering, Mysuru</div><p style="color:#aaa; margin-top:0.5rem;">Aug 2022 - Present | CGPA: 8.7/10</p><p style="color:#aaa; font-size:0.85rem;">Core courses: Data Structures, Algorithms, ML, Deep Learning, Embedded Systems.</p></div></div>
+      <div><div class="section-header" style="text-align:left"><div class="section-subtitle">RECOGNITION</div><h2 class="section-title">Certifications</h2><div class="section-divider" style="margin:1rem 0"></div></div>
+      <div class="card"><div class="cert-grid" style="grid-template-columns:1fr"><div class="cert-item" style="background:#1a1a1a">🏅 Certificate of Merit – Techkriti'24 (top 5% of 500 teams)</div><div class="cert-item" style="background:#1a1a1a">🌱 Finalist – Grassroot Innovation 2025 (SOIL project, Govt of Karnataka)</div><div class="cert-item" style="background:#1a1a1a">🤖 Generative AI Specialist – Sep 2024 (NVIDIA DLI certified)</div><div class="cert-item" style="background:#1a1a1a">📜 Internship Completion – Plasmid (Oct 2024)</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills - Clean and precise -->
+<section id="skills" style="background: #0d0d0d;">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-subtitle">TECHNICAL TOOLKIT</div>
+      <h2 class="section-title">Core Competencies</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="skills-wrapper">
+      <div class="skill-category"><h4><i class="fas fa-code"></i> Programming Languages</h4><div class="skill-tags"><span class="skill-tag">Python (advanced)</span><span class="skill-tag">Java</span><span class="skill-tag">C</span><span class="skill-tag">SQL</span></div></div>
+      <div class="skill-category"><h4><i class="fas fa-globe"></i> Web & API</h4><div class="skill-tags"><span class="skill-tag">HTML5/CSS3</span><span class="skill-tag">JavaScript (ES6)</span><span class="skill-tag">REST APIs</span></div></div>
+      <div class="skill-category"><h4><i class="fas fa-chart-bar"></i> Data Science & ML</h4><div class="skill-tags"><span class="skill-tag">Scikit-learn</span><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">XGBoost</span><span class="skill-tag">LangChain</span></div></div>
+      <div class="skill-category"><h4><i class="fas fa-microchip"></i> Embedded & Hardware</h4><div class="skill-tags"><span class="skill-tag">Raspberry Pi</span><span class="skill-tag">ESP32</span><span class="skill-tag">Sensor Integration</span><span class="skill-tag">Modbus</span></div></div>
+      <div class="skill-category"><h4><i class="fas fa-tools"></i> Tools & Platforms</h4><div class="skill-tags"><span class="skill-tag">Git/GitHub</span><span class="skill-tag">Figma</span><span class="skill-tag">Chroma DB</span><span class="skill-tag">Cloudflare</span><span class="skill-tag">MS Office</span></div></div>
+      <div class="skill-category"><h4><i class="fas fa-flask"></i> Research & Execution</h4><div class="skill-tags"><span class="skill-tag">Data collection</span><span class="skill-tag">Statistical analysis</span><span class="skill-tag">Full project lifecycle</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Additional Info -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-subtitle">BEYOND CODE</div>
+      <h2 class="section-title">Additional Information</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="additional-info">
+      <div class="info-row"><span class="info-label"><i class="fas fa-language"></i> Languages:</span><span class="info-value">English (professional fluency), Kannada (native), Telugu (native), Hindi (basic)</span></div>
+      <div class="info-row"><span class="info-label"><i class="fas fa-heart"></i> Interests:</span><span class="info-value">Drone building (built 2 custom UAVs), competitive robotics, open-source ML contributions</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-subtitle">GET IN TOUCH</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:saisanjeev2004@gmail.com">saisanjeev2004@gmail.com</a></div>
+        <div class="contact-item"><i class="fas fa-phone-alt"></i><span>+91 80737 08129</span></div>
+        <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/medhahal-sai-sanjeev" target="_blank">linkedin.com/in/medhahal-sai-sanjeev</a></div>
+        <div class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/goodachari-master" target="_blank">github.com/goodachari-master</a></div>
+        <div class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/Puttu03" target="_blank">github.com/Puttu03</a></div>
+      </div>
+      <div class="social-links">
+        <a href="https://github.com/goodachari-master" class="social-btn" target="_blank"><i class="fab fa-github"></i> GitHub (Main)</a>
+        <a href="https://github.com/Puttu03" class="social-btn" target="_blank"><i class="fab fa-github"></i> GitHub (Projects)</a>
+        <a href="www.linkedin.com/in/medhahal-sai-sanjeev" class="social-btn" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem; color: #888;"><i class="fas fa-map-marker-alt"></i> Bellary, Karnataka, India - 583101</div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Medhahal Sai Sanjeev — AI/ML Engineer | ALPHA TL Manager @ NIE Mysore</p>
+  <p style="margin-top:0.5rem;">Clean design • Fully responsive • Metrics-driven project descriptions</p>
+</footer>
+
+<script>
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const navMenu = document.getElementById('navMenu');
+  mobileBtn?.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+  document.querySelectorAll('.nav-link').forEach(link => { link.addEventListener('click', () => { navMenu.classList.remove('active'); }); });
+  window.addEventListener('scroll', () => { document.querySelector('.site-header').style.background = window.scrollY > 50 ? 'rgba(10,10,10,0.96)' : 'rgba(10,10,10,0.92)'; });
+</script>
+</body>
+</html>
