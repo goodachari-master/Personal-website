@@ -13,6 +13,11 @@ AddDefaultCharset UTF-8
     Header set Cache-Control "max-age=2592000, public"
 </FilesMatch>
 
+<FilesMatch "\.xml$">
+    AddType application/xml .xml
+    Header set Content-Type "application/xml; charset=utf-8"
+</FilesMatch>
+
 # Enable compression
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript
