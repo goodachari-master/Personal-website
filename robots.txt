@@ -1,0 +1,13 @@
+# Allow all crawlers to access the site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://gmmss.xyz/sitemap.xml
+
+# Crawl delay to be respectful to server
+Crawl-delay: 1
+
+# Disallow sensitive paths (if any)
+Disallow: /private/
+Disallow: /admin/
