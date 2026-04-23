@@ -1,27 +1,23 @@
 # Enable rewrite engine
 RewriteEngine On
 
-# Force HTTPS (uncomment after SSL is installed)
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
-# Set default character set
-AddDefaultCharset UTF-8
+# Remove trailing slashes
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
 
-# Cache control for static assets
+# Custom 404 page
+ErrorDocument 404 /404.html
+
+# Cache control
 <FilesMatch "\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2)$">
     Header set Cache-Control "max-age=2592000, public"
 </FilesMatch>
 
-<FilesMatch "\.xml$">
-    AddType application/xml .xml
-    Header set Content-Type "application/xml; charset=utf-8"
-</FilesMatch>
-
 # Enable compression
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json
 </IfModule>
-
-# Custom error pages
-ErrorDocument 404 /404.html
